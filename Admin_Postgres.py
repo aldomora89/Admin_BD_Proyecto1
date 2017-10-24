@@ -28,7 +28,7 @@ def get_ip_address():
 def Connect_DB():
     #dsn_hostname = 'UbuntuVirtAlmora10'
     #dsn_hostname = '192.168.43.253'
-    dsn_hostname = '192.168.43.253'
+    dsn_hostname = '10.2.5.61'
     #dsn_hostname = '192.168.1.17'
     dsn_uid = input("Iniciar Sesión\nUsuario: ")
     # dsn_uid = "postgres"
@@ -315,15 +315,14 @@ try:
 
                 # get_ip_address()
                 #dsn_hostname = 'UbuntuVirtAlmora10'
-                #dsn_hostname = '10.2.5.61'
+                dsn_hostname = '10.2.5.61'
                 #dsn_hostname = '192.168.1.17'
-                dsn_hostname = '192.168.43.253'
+                #dsn_hostname = '192.168.43.253'
                 dsn_uid = input("Usuario: ")
-                # dsn_uid = "postgres"
                 dsn_pwd = input("Contraseña: ")
                 #dsn_pwd = "12345"
-                dsn_database = "postgres"
-                # dsn_database = input("Ingrese la base de datos: ")
+                #dsn_database = "postgres"
+                dsn_database = input("Ingrese la base de datos: ")
                 dsn_port = "5432"
 
                 # Conexion a Base de Datos
