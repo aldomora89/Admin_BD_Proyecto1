@@ -47,14 +47,22 @@ def Connect_DB():
 
 
 def printTables(tname):
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM {tap}'.format(tap=tname))
+    rows = cur.fetchall()
+    print(rows)
+
+def printTablesColum(tname):
     my_table = pandas.read_sql('SELECT * FROM {tab}'.format(tab=tname), conn)
     print(my_table)
 
-
 def printBDs():
-    my_BD = pandas.read_sql('\l',conn)
+    cur = conn.cursor()
+    cur.execute('\l')
+    rows = cur.fetchall()
+    #my_BD = pandas.read_sql('\l',conn)
     #my_BD = psql.read_sql("\l", conn)
-    print(my_BD)
+    print(rows)
 
 
 # Metodos para DDL
@@ -147,7 +155,7 @@ def crear_tabla(name):
           ADDRESS        CHAR(50),
           SALARY         REAL);'''.format(tab=name))
     print("Tabla Creada Exitosamente")
-    printTables(name)
+    printTablesColum(name)
     cur.close()
     conn.commit()
 
@@ -197,7 +205,7 @@ def select_to_table(tname):
 
 def interpreta_comando(comando):
     arreglo = comando.split(" ")
-
+    
     try:
         primerComando = arreglo[0]
         segundoComando = arreglo[1]
@@ -315,8 +323,8 @@ try:
 
                 # get_ip_address()
                 #dsn_hostname = 'UbuntuVirtAlmora10'
-                dsn_hostname = '10.2.5.61'
-                #dsn_hostname = '192.168.1.17'
+                #dsn_hostname = '10.2.5.61'
+                dsn_hostname = '192.168.0.37'
                 #dsn_hostname = '192.168.43.253'
                 dsn_uid = input("Usuario: ")
                 dsn_pwd = input("Contraseña: ")
